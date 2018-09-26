@@ -3,5 +3,7 @@ defmodule RestcountriesEx do
   Documentation for RestcountriesEx.
   """
 
-  defdelegate all(), to: RestcountriesEx.Country
+  @docmodule """
+  """
+  defdelegate all(fields \\ []), to: RestcountriesEx.Country
 end

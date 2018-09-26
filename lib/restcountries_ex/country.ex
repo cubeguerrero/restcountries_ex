@@ -2,6 +2,8 @@ defmodule RestcountriesEx.Country do
   @moduledoc """
   """
 
+  import RestcountriesEx.Client, only: [get: 3]
+
   @doc """
   Returns all the countries from the Rest Countries API as a list of maps.
 
@@ -11,13 +13,13 @@ defmodule RestcountriesEx.Country do
       [%{}, ...]
 
   """
-  def all() do
-    Application.get_env(:restcountries_ex, :api_url) <> "/all"
-    |> HTTPoison.get()
-    |> handle_response()
+  def all(fields \\ []) do
+    get("all", [], [params: [fields: prepare_fields(fields)]])
   end
 
-  defp handle_response({:ok, %{status_code: 200, body: body}}) do
-    Poison.Parser.parse!(body, %{})
+  defp prepare_fields(fields) do
+    fields
+    |> Enum.map(&to_string/1)
+    |> Enum.join(";")
   end
 end

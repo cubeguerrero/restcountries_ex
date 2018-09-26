@@ -15,6 +15,9 @@ defmodule RestcountriesEx.Client do
   defp handle_response({:ok, %{status_code: 200, body: body}}) do
     {:ok, Parser.parse!(body, %{})}
   end
+  defp handle_response({:ok, %{status_code: 404, body: body}}) do
+    {:ok, %{message: "Not found"}}
+  end
   defp handle_response({:error, %{status_code: _, body: body}}) do
     {:error, Parser.parse!(body, %{})}
   end

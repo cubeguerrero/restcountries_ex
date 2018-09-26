@@ -17,6 +17,14 @@ defmodule RestcountriesEx.Country do
     get("all", [], [params: [fields: prepare_fields(fields)]])
   end
 
+  def find_by_name(name, full_text \\ false) do
+    find_by("name/#{name}", [fullText: full_text])
+  end
+
+  defp find_by(endpoint, params) do
+    get(endpoint, [], [params: params])
+  end
+
   defp prepare_fields(fields) do
     fields
     |> Enum.map(&to_string/1)

@@ -3,16 +3,5 @@ defmodule RestcountriesEx do
   Documentation for RestcountriesEx.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> RestcountriesEx.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  defdelegate all(), to: RestcountriesEx.Country
 end

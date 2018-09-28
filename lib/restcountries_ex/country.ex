@@ -21,7 +21,31 @@ defmodule RestcountriesEx.Country do
     find_by("name/#{name}", [fullText: full_text])
   end
 
-  defp find_by(endpoint, params) do
+  def find_by_country_code(code) do
+    find_by("alpha/#{code}")
+  end
+
+  def find_by_currency_code(currency) do
+    find_by("currency/#{currency}")
+  end
+
+  def find_by_language_code(language) do
+    find_by("language/#{language}")
+  end
+
+  def find_by_capital_city(city_name) do
+    find_by("capital/#{city_name}")
+  end
+
+  def find_by_calling_code(calling_code) do
+    find_by("callingcode/#{calling_code}")
+  end
+
+  def find_by_region(region) do
+    find_by("region/#{region}")
+  end
+
+  defp find_by(endpoint, params \\ []) do
     get(endpoint, [], [params: params])
   end
 

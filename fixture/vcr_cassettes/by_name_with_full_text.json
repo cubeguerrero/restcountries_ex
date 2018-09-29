@@ -1,0 +1,32 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://restcountries.eu/rest/v2/name/philippines?fullText=false"
+    },
+    "response": {
+      "binary": false,
+      "body": "[{\"name\":\"Philippines\",\"topLevelDomain\":[\".ph\"],\"alpha2Code\":\"PH\",\"alpha3Code\":\"PHL\",\"callingCodes\":[\"63\"],\"capital\":\"Manila\",\"altSpellings\":[\"PH\",\"Republic of the Philippines\",\"Repúblika ng Pilipinas\"],\"region\":\"Asia\",\"subregion\":\"South-Eastern Asia\",\"population\":103279800,\"latlng\":[13.0,122.0],\"demonym\":\"Filipino\",\"area\":342353.0,\"gini\":43.0,\"timezones\":[\"UTC+08:00\"],\"borders\":[],\"nativeName\":\"Pilipinas\",\"numericCode\":\"608\",\"currencies\":[{\"code\":\"PHP\",\"name\":\"Philippine peso\",\"symbol\":\"₱\"}],\"languages\":[{\"iso639_1\":\"en\",\"iso639_2\":\"eng\",\"name\":\"English\",\"nativeName\":\"English\"}],\"translations\":{\"de\":\"Philippinen\",\"es\":\"Filipinas\",\"fr\":\"Philippines\",\"ja\":\"フィリピン\",\"it\":\"Filippine\",\"br\":\"Filipinas\",\"pt\":\"Filipinas\",\"nl\":\"Filipijnen\",\"hr\":\"Filipini\",\"fa\":\"جزایر الندفیلیپین\"},\"flag\":\"https://restcountries.eu/data/phl.svg\",\"regionalBlocs\":[{\"acronym\":\"ASEAN\",\"name\":\"Association of Southeast Asian Nations\",\"otherAcronyms\":[],\"otherNames\":[]}],\"cioc\":\"PHI\"}]",
+      "headers": {
+        "Date": "Sat, 29 Sep 2018 06:50:44 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "993",
+        "Connection": "keep-alive",
+        "Set-Cookie": "__cfduid=dde2b716ced3ead2af5afc600b935f5501538203843; expires=Sun, 29-Sep-19 06:50:43 GMT; path=/; domain=.restcountries.eu; HttpOnly",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET",
+        "Access-Control-Allow-Headers": "Accept, X-Requested-With",
+        "Cache-Control": "public, max-age=86400",
+        "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+        "Server": "cloudflare",
+        "CF-RAY": "461c8468ae193367-HKG"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

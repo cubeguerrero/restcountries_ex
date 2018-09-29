@@ -22,7 +22,10 @@ defmodule RestcountriesEx.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.3"},
-      {:poison,    "~> 4.0"}
+      {:poison,    "~> 4.0"},
+
+      # Test dependencies
+      {:exvcr, "~> 0.10", only: :test}
     ]
   end
 end

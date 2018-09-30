@@ -79,7 +79,7 @@ defmodule RestcountriesEx.Country do
 
   """
   def find_by_language_code(language) do
-    find_by("language/#{language}")
+    find_by("lang/#{language}")
   end
 
   def find_by_capital_city(city_name) do

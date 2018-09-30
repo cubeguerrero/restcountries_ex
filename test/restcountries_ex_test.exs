@@ -56,6 +56,16 @@ defmodule RestcountriesExTest do
     end
   end
 
+  test "finds country by language code" do
+    use_cassette "by_language_code" do
+      assert {:ok, countries} = RestcountriesEx.find_by_language_code("en")
+      assert Enum.member?(
+        Enum.map(countries, &get_alpha_code/1),
+        "PH"
+      )
+    end
+  end
+
   defp get_alpha_code_of_first_country([head | _tail]) do
     get_alpha_code(head)
   end

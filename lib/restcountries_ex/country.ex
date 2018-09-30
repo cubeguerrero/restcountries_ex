@@ -27,7 +27,7 @@ defmodule RestcountriesEx.Country do
       {:ok, [%{alpha2Code: "UM"}, %{alpha2Code: "US"}]}
 
       iex> RestcountriesEx.Country.find_by_name("united states", true)
-      {:ok, [${alpha2Code: "US"}]}
+      {:ok, [%{alpha2Code: "US"}]}
 
   """
   def find_by_name(name, full_text \\ false) do
@@ -44,17 +44,40 @@ defmodule RestcountriesEx.Country do
       {:ok, [%{alpha2Code: "co"}]}
 
       iex> RestcountriesEx.Country.find_by_country_code(["co", "us", um")
-      {:ok, [${alpha2Code: "co"}]}
+      {:ok, [%{alpha2Code: "co"}]}
 
   """
   def find_by_country_code(codes) do
     get("alpha", [], [params: [codes: prepare_fields(codes)]])
   end
 
+  @doc """
+  Searches a country by currency code, ISO 3166-1 2-letter or 3-letter country.
+  This returns a list of countries, and uses the /currency/{currency_code} endpoint.
+
+  ## Examples
+
+      iex> RestcountriesEx.Country.find_by_currency_code("php")
+      {:ok, [%{alpha2Code: "PH"}]}
+
+  """
   def find_by_currency_code(currency) do
     find_by("currency/#{currency}")
   end
 
+  @doc """
+  Searches a country by language code, ISO6391_1 2-letter or ISO6391_2 3-letter language code.
+  This returns a list of countries, and uses the /currency/{currency_code} endpoint.
+
+  ## Examples
+
+      iex> RestcountriesEx.Country.find_by_currency_code("en")
+      {:ok, [%{alpha2Code: "PH", ...}]}
+
+      iex> RestcountriesEx.Country.find_by_currency_code("eng")
+      {:ok, [%{alpha2Code: "PH", ...}]}
+
+  """
   def find_by_language_code(language) do
     find_by("language/#{language}")
   end

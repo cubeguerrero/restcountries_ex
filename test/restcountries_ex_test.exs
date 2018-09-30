@@ -16,12 +16,7 @@ defmodule RestcountriesExTest do
   test "gets country by name" do
     use_cassette "by_name" do
       assert {:ok, countries} = RestcountriesEx.find_by_name("phil")
-
-      alpha_code =
-        countries
-        |> Enum.at(0)
-        |> Map.get("alpha2Code")
-      assert alpha_code == "PH"
+      assert get_alpha_code_of_first_country(countries) == "PH"
     end
   end
 
@@ -29,31 +24,35 @@ defmodule RestcountriesExTest do
     use_cassette "by_name_with_multiple_words" do
       assert {:ok, countries} = RestcountriesEx.find_by_name("united states")
       assert length(countries) == 2
-      assert ["UM", "US"] == Enum.map(countries, &(&1["alpha2Code"]))
+      assert ["UM", "US"] == Enum.map(countries, &get_alpha_code/1)
     end
   end
 
   test "gets country by name with full_text" do
     use_cassette "by_name_with_full_text" do
       assert {:ok, countries} = RestcountriesEx.find_by_name("philippines", true)
-
-      alpha_code =
-        countries
-        |> Enum.at(0)
-        |> Map.get("alpha2Code")
-      assert alpha_code == "PH"
+      assert get_alpha_code_of_first_country(countries) == "PH"
     end
   end
 
   test "gets country by name with multiple_words with full_text" do
     use_cassette "by_name_with_multiple_words_with_full_text" do
       assert {:ok, countries} = RestcountriesEx.find_by_name("united states of america", true)
-
-      alpha_code =
-        countries
-        |> Enum.at(0)
-        |> Map.get("alpha2Code")
-      assert alpha_code == "US"
+      assert get_alpha_code_of_first_country(countries) == "US"
     end
+  end
+
+  test "gets country by country code" do
+    use_cassette "by_country_code" do
+      assert {:ok, countries} = RestcountriesEx.find_by_country_code(["us", "um"])
+    end
+  end
+
+  defp get_alpha_code_of_first_country([head | _tail]) do
+    get_alpha_code(head)
+  end
+
+  def get_alpha_code(country) do
+    Map.get(country, "alpha2Code")
   end
 end

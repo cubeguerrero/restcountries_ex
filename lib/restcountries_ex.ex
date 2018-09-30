@@ -9,6 +9,7 @@ defmodule RestcountriesEx do
 
   defdelegate all(fields \\ []), to: Country
   defdelegate find_by_name(name, full_text \\ false), to: Country
-  defdelegate find_by_country_code(codes), to: Country
+  defdelegate find_by_country_code(currency_codes), to: Country
+  defdelegate find_by_currency_code(currency_code), to: Country
   defdelegate find_by_region(region), to: Country
 end

@@ -45,6 +45,7 @@ defmodule RestcountriesExTest do
   test "finds country by country code" do
     use_cassette "by_country_code" do
       assert {:ok, countries} = RestcountriesEx.find_by_country_code(["us", "um"])
+      assert ["US", "UM"] == Enum.map(countries, &get_alpha_code/1)
     end
   end
 

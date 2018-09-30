@@ -14,7 +14,7 @@ defmodule RestcountriesEx.Country do
 
   """
   def all(fields \\ []) do
-    get("all", [], [params: [fields: prepare_fields(fields)]])
+    get("all", [], [params: [fields: prepare_params(fields)]])
   end
 
   @doc """
@@ -48,7 +48,7 @@ defmodule RestcountriesEx.Country do
 
   """
   def find_by_country_code(codes) do
-    get("alpha", [], [params: [codes: prepare_fields(codes)]])
+    get("alpha", [], [params: [codes: prepare_params(codes)]])
   end
 
   @doc """
@@ -98,8 +98,8 @@ defmodule RestcountriesEx.Country do
     get(endpoint, [], [params: params])
   end
 
-  defp prepare_fields(fields) do
-    fields
+  defp prepare_params(params) do
+    params
     |> Enum.map(&to_string/1)
     |> Enum.join(";")
   end
